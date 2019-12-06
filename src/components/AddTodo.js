@@ -9,11 +9,16 @@ class AddTodo extends React.Component {
     }
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.props.addTodo(this.state.title);
+    this.setState({ title: '' })
+  }
   handlerOnChange = (e) => this.setState({ title: e.target.value });
 
   render() {
     return (
-        <form style={{ display: 'flex' }}>
+        <form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
           <input
               type="text"
               name="title"

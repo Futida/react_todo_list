@@ -3,6 +3,7 @@ import './App.css';
 import Todos from './components/Todos'
 import Header from './components/layout/Header'
 import AddTodo from './components/AddTodo'
+import uuid from 'uuid'
 
 class App extends React.Component {
 
@@ -11,12 +12,12 @@ class App extends React.Component {
     this.state = {
       todos: [
         {
-          id: 1,
+          id: uuid.v4(),
           title: 'Make foodlist',
           complete: false,
         },
         {
-          id: 2,
+          id: uuid.v4(),
           title: 'Tidy room',
           complete: true,
         }
@@ -45,12 +46,21 @@ class App extends React.Component {
     })
   };
 
+  addTodo = (title) => {
+    const newTodo = {
+      id: uuid.v4(),
+      title,
+      comleted: false,
+    }
+    this.setState({ todos: [...this.state.todos, newTodo] })
+  }
+
   render() {
     return (
         <div className="App">
           <div className="container">
-            <Header />
-            <AddTodo />
+            <Header/>
+            <AddTodo addTodo={this.addTodo}/>
             <Todos
                 todos={this.state.todos}
                 completeTodo={this.completeTodo}
