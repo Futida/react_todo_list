@@ -7,28 +7,29 @@ class TodoItem extends React.Component {
     return {
       display: 'flex',
       justifyContent: 'space-between',
+      alignItems: 'center',
       backgroundColor: '#f4f4f4',
       padding: '10px',
       borderBottom: '1px #ccc dotted',
       textDecoration: this.props.todo.complete ?
-          'line-through' : 'none'
+        'line-through' : 'none'
     }
   };
 
   render() {
     const { id, title, complete } = this.props.todo;
-    const {completeTodo, deleteTodo} = this.props;
+    const { completeTodo, deleteTodo } = this.props;
 
     return (
-        <div style={this.getStyle()}>
-          <p>
-            <input type="checkbox" onChange={completeTodo.bind(this, id)} checked={complete}/>
-            {title}
-          </p>
-          <div style={btnStyle} onClick={deleteTodo.bind(this, id)}>
-            <span>x</span>
-          </div>
+      <div style={this.getStyle()}>
+        <p style={{ flex: '1' }}>
+          <input type="checkbox" id={id} onChange={completeTodo.bind(this, id)} checked={complete} />
+          <label for={id}>{title}</label>
+        </p>
+        <div style={btnStyle} onClick={deleteTodo.bind(this, id)}>
+          <span>x</span>
         </div>
+      </div>
     );
   }
 }

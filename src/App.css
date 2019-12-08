@@ -16,7 +16,6 @@ body {
 .App {
     height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -25,6 +24,12 @@ body {
     flex-direction: column;
     padding: 0 1rem;
     width: 500px;
+}
+
+.busy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 a {
